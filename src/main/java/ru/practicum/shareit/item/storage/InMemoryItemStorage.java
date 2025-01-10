@@ -1,6 +1,5 @@
 package ru.practicum.shareit.item.storage;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import ru.practicum.shareit.exception.NotFoundException;
 import ru.practicum.shareit.exception.ValidationException;
@@ -14,7 +13,6 @@ import java.util.Map;
 import static java.util.stream.Collectors.toList;
 
 @Component
-@Qualifier("InMemoryItemStorage")
 public class InMemoryItemStorage implements ItemStorage {
 
     public Map<Long, Item> items;
@@ -31,6 +29,7 @@ public class InMemoryItemStorage implements ItemStorage {
             item.setId(++currentId);
             items.put(item.getId(), item);
         }
+
         return item;
     }
 
@@ -54,6 +53,7 @@ public class InMemoryItemStorage implements ItemStorage {
         if (isValidItem(item)) {
             items.put(item.getId(), item);
         }
+
         return item;
     }
 
@@ -65,6 +65,7 @@ public class InMemoryItemStorage implements ItemStorage {
         if (!items.containsKey(itemId)) {
             throw new NotFoundException("Вещь с ID=" + itemId + " не найден!");
         }
+
         return items.remove(itemId);
     }
 
@@ -89,6 +90,7 @@ public class InMemoryItemStorage implements ItemStorage {
         if (!items.containsKey(itemId)) {
             throw new NotFoundException("Вещь с ID=" + itemId + " не найдена!");
         }
+
         return items.get(itemId);
     }
 
@@ -102,6 +104,7 @@ public class InMemoryItemStorage implements ItemStorage {
                             item.getDescription().toLowerCase().contains(text))
                     .collect(toList());
         }
+
         return searchItems;
     }
 
@@ -109,6 +112,7 @@ public class InMemoryItemStorage implements ItemStorage {
         if ((item.getName().isEmpty()) || (item.getDescription().isEmpty()) || (item.getAvailable() == null)) {
             throw new ValidationException("У вещи некорректные данные");
         }
+
         return true;
     }
 }

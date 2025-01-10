@@ -1,7 +1,6 @@
 package ru.practicum.shareit.item;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import ru.practicum.shareit.exception.NotFoundException;
 import ru.practicum.shareit.exception.ValidationException;
@@ -21,8 +20,8 @@ public class ItemService {
     private final UserStorage userStorage;
 
     @Autowired
-    public ItemService(@Qualifier("InMemoryItemStorage") ItemStorage itemStorage,
-                       @Qualifier("InMemoryUserStorage") UserStorage userStorage) {
+    public ItemService(ItemStorage itemStorage,
+                       UserStorage userStorage) {
         this.itemStorage = itemStorage;
         this.userStorage = userStorage;
     }

@@ -1,7 +1,6 @@
 package ru.practicum.shareit.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import ru.practicum.shareit.exception.DuplicateException;
 import ru.practicum.shareit.exception.NotFoundException;
@@ -17,12 +16,10 @@ import static java.util.stream.Collectors.toList;
 @Service
 public class UserService {
     private final UserStorage userStorage;
-    private final UserMapper mapper;
 
     @Autowired
-    public UserService(@Qualifier("InMemoryUserStorage") UserStorage userStorage, UserMapper userMapper) {
+    public UserService(UserStorage userStorage) {
         this.userStorage = userStorage;
-        this.mapper = userMapper;
     }
 
     public List<UserDto> getUsers() {
