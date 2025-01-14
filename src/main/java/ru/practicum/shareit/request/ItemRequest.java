@@ -8,6 +8,6 @@ import java.time.LocalDateTime;
 public class ItemRequest {
     private Long id;
     private String description;
-    private String requestor;
+    private Long requestorId;
     private LocalDateTime created;
 }
