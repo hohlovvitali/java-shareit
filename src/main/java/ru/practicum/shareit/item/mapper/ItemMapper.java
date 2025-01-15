@@ -31,7 +31,6 @@ public class ItemMapper {
                 .requestId(item.getRequestId() != null ? item.getRequestId() : null)
                 .lastBooking(bookingService.getLastBooking(item.getId()))
                 .nextBooking(bookingService.getNextBooking(item.getId()))
-//                .comments(itemService.getCommentsByItemId(item.getId()))
                 .build();
     }
 

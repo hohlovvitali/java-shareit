@@ -41,7 +41,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto create(UserDto userDto) throws DuplicateException {
-        System.out.println(userDto);
         try {
             checkEmailDuplicates(userDto);
             return UserMapper.toUserDto(repository.save(UserMapper.toUser(userDto)));
@@ -57,7 +56,6 @@ public class UserServiceImpl implements UserService {
             userDto.setId(id);
         }
 
-        System.out.println(userDto);
         User user = repository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Пользователь с ID=" + id + " не найден!"));
         if (userDto.getName() != null) {

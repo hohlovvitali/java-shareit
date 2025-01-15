@@ -17,9 +17,9 @@ import lombok.NoArgsConstructor;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // уникальный идентификатор пользователя
+    private Long id;
     @NotBlank
-    private String name;    // имя или логин пользователя
+    private String name;
     @Email
-    private String email;   // адрес электронной почты
+    private String email;
 }

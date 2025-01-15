@@ -63,7 +63,6 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public ItemDto create(ItemDto itemDto, Long ownerId) throws NotFoundException {
         checkUserById(ownerId);
-        System.out.println(itemDto);
         return itemMapper.toItemDto(itemRepository
                 .save(ItemMapper.toItem(itemDto, userRepository.findById(ownerId).orElseThrow())));
     }
