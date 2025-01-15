@@ -14,12 +14,12 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class CommentDto {
-    private Long id;                // уникальный идентификатор комментария;
+    private Long id;
     @NotEmpty
     @NotBlank
-    private String text;            // содержимое комментария;
+    private String text;
     @JsonIgnore
-    private Item item;              // вещь, к которой относится комментарий;
-    private String authorName;      // имя автора комментария;
-    private LocalDateTime created;  // дата создания комментария.
+    private Item item;
+    private String authorName;
+    private LocalDateTime created;
 }
