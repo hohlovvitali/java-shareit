@@ -9,6 +9,8 @@ import ru.practicum.shareit.exception.ValidationException;
 import ru.practicum.shareit.user.dto.UserDto;
 
 import jakarta.validation.Valid;
+import ru.practicum.shareit.user.service.UserService;
+
 import java.util.List;
 
 @Slf4j
@@ -29,6 +31,7 @@ public class UserController {
 
     @GetMapping("/{userId}")
     public UserDto getUserById(@PathVariable Long userId) throws NotFoundException {
+        log.info("Вывод пользователя с ID={}", userId);
         return userService.getUserById(userId);
     }
 
@@ -47,8 +50,8 @@ public class UserController {
     }
 
     @DeleteMapping("/{userId}")
-    public UserDto delete(@PathVariable Long userId) throws ValidationException, NotFoundException {
+    public void delete(@PathVariable Long userId) throws ValidationException, NotFoundException {
         log.info("Удаление пользователя с ID={}", userId);
-        return userService.delete(userId);
+        userService.delete(userId);
     }
 }

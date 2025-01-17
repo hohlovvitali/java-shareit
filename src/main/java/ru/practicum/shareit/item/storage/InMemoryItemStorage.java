@@ -72,13 +72,13 @@ public class InMemoryItemStorage implements ItemStorage {
     @Override
     public List<Item> getItemsByOwner(Long ownerId) {
         return items.values().stream()
-                .filter(item -> item.getOwnerId().equals(ownerId)).collect(java.util.stream.Collectors.toList());
+                .filter(item -> item.getOwner().getId().equals(ownerId)).collect(java.util.stream.Collectors.toList());
     }
 
     @Override
     public void deleteItemsByOwner(Long ownerId) {
         List<Long> deleteIds = items.values().stream()
-                .filter(item -> item.getOwnerId().equals(ownerId))
+                .filter(item -> item.getOwner().getId().equals(ownerId))
                 .map(Item::getId).toList();
         for (Long deleteId : deleteIds) {
             items.remove(deleteId);
