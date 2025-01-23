@@ -35,6 +35,7 @@ public class UserController {
         return userService.getUserById(userId);
     }
 
+    @ResponseBody
     @PostMapping
     public UserDto create(@Valid @RequestBody UserDto userDto) throws ValidationException, DuplicateException {
         log.info("Создание нового пользователя");
